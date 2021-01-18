@@ -29,23 +29,25 @@ class Game {
   }
 
   play(){
-    form.hide();
-    textSize(30);
-    text("Game Start", 120, 100)
-    Player.getPlayerInfo();
+    form.hide()
+    text("start the game")
+    Player.getPlayerInfo()
+    if(allPlayers!==undefined){
+          var i=0
+              for(var p in allPlayers){
+                cars[i].y=allPlayers[p].distance
+               
+                if((i+1)=== player.index) {
 
-    if(allPlayers !== undefined){
-      var display_position = 130;
-      for(var plr in allPlayers){
-        if (plr === "player" + player.index)
-          fill("red")
-        else
-          fill("black");
+                camera.position.y=cars[i].y
+                  cars[i].shapeColor="red"
+                }
+                i=i+1
+              
+              }   
+    
+                
 
-        display_position+=20;
-        textSize(15);
-        text(allPlayers[plr].name + ": " + allPlayers[plr].distance, 120,display_position)
-      }
     }
 
     if(keyIsDown(UP_ARROW) && player.index !== null){
